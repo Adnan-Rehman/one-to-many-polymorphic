@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PostController
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +20,14 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $post = Post::create([
+            'title' => 'New Title One',
+            'description' => 'kjaldfjal;dfjalkfdjasflkasjfkl',
+        ]);
+
+        $post->comments()->create([
+            'detail' => 'This is post comment',
+        ]);
     }
 
     /**
